@@ -1,0 +1,11 @@
+header {
+  background-color: #202020;
+  margin-bottom: 25px;
+  color: white;
+}
+
+header img {
+  width: 95px;
+  height: 44px;
+  object-fit: cover;
+}
