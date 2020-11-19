@@ -6,3 +6,74 @@ a {
   color: inherit;
   text-decoration: none;
 }
+
+.loading {
+  width: 100vw;
+  height: 45vh;
+  display: flex;
+  justify-content: center;
+  margin-top: 100px;
+  align-items: center;
+}
+
+.pages {
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+}
+
+.pages span {
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.pages span:hover {
+  color: #e62529;
+}
+
+.pages .active-page {
+  font-weight: bold;
+}
+.pages span:not(:last-child) {
+  margin-right: 30px;
+}
+
+.pages svg {
+  cursor: pointer;
+}
+
+.pages svg:first-child {
+  margin-right: 30px;
+}
+
+.pages .display-none {
+  display: none;
+}
+
+.main-navigation {
+  padding: 0 15px;
+}
+
+.main-navigation > div:first-child {
+  position: relative;
+}
+
+.main-navigation > div:last-child {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+  border-top: 2px solid lightgrey;
+  padding-top: 25px;
+  margin-top: -2px;
+}
+
+.main-navigation > div:last-child > p {
+  color: rgb(174, 174, 174);
+}
+
+.main-navigation > h2 {
+  margin-bottom: 15px;
+  color: #202020;
+  font-size: 26px;
+  letter-spacing: 1px;
+}

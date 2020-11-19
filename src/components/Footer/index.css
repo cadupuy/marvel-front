@@ -4,6 +4,11 @@ footer {
   display: flex;
   justify-content: center;
   color: white;
-  margin-top: 20px;
+  margin-top: 80px;
   align-items: center;
+  letter-spacing: 0.5px;
+}
+
+footer strong {
+  font-weight: bold;
 }

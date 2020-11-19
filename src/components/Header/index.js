@@ -5,10 +5,14 @@ import "./index.css";
 const Header = () => {
   return (
     <header>
-      <img
-        src="https://marvel-jolisdegats.netlify.app/static/media/Marvel-Comics-Logo.575beca3.png"
-        alt=""
-      />
+      <div>
+        <Link to="/">
+          <img
+            src="https://marvel-jolisdegats.netlify.app/static/media/Marvel-Comics-Logo.575beca3.png"
+            alt=""
+          />
+        </Link>
+      </div>
       <nav>
         <ul>
           <Link to="/characters">
@@ -17,10 +21,13 @@ const Header = () => {
           <Link to="/comics">
             <li>Comics</li>
           </Link>
-          <li>My Favs</li>
+          <Link to="/comics">
+            <li>My Favorites</li>
+          </Link>
+          <Link to="/comics">
+            <li>Login</li>
+          </Link>
         </ul>
-
-        <p>Login</p>
       </nav>
     </header>
   );

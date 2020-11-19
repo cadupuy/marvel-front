@@ -1,0 +1,44 @@
+.character-section {
+  margin-top: -25px;
+  position: relative;
+  background-image: url(https://marvel-jolisdegats.netlify.app/static/media/background.cbd090c1.gif);
+  background-repeat: no-repeat;
+  background-position: center;
+  padding-bottom: 50px;
+  margin-bottom: -80px;
+  color: white;
+  padding-top: 40px;
+}
+
+.character-section .container {
+  display: flex;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.4);
+  width: 80%;
+  margin: auto;
+  padding-top: 50px;
+}
+
+.character-section .container > div:first-child img {
+  margin-right: 50px;
+  border-radius: 10px;
+  width: 500px;
+  height: 500px;
+  object-fit: cover;
+}
+
+.character-section .container > div:nth-child(2) p {
+  margin-right: 30px;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+  line-height: 21px;
+  font-family: "Open Sans", sans-serif;
+}
+
+.character-section h2 {
+  font-size: 50px;
+  letter-spacing: 0.5px;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}

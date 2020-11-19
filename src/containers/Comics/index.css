@@ -1,7 +1,17 @@
 .comics-section {
   display: flex;
   flex-wrap: wrap;
+  width: 100%;
+  margin-top: 30px;
+}
+
+.comics-section > div {
+  flex: 15%;
+}
+
+main {
   width: 80%;
   margin: auto;
-  justify-content: center;
+  max-width: 1200px;
+  margin-top: 80px;
 }
