@@ -1,11 +1,41 @@
-import React from "react";
+import React, { useState } from "react";
 import "./index.css";
 
-const CharacterContent = ({ character, comics }) => {
+import Cookies from "js-cookie";
+
+const CharacterContent = ({
+  character,
+  comics,
+  favoriteCharacter,
+  favoriteCharacters,
+  setFavoriteCharacters,
+}) => {
+  const handleClick = () => {
+    if (favoriteCharacters.indexOf(character.id) === -1) {
+      favoriteCharacter(character.id);
+    } else {
+      let index = favoriteCharacters.indexOf(character.id);
+      const newTab = [...favoriteCharacters];
+      newTab.splice(index, 1);
+      setFavoriteCharacters(newTab);
+      Cookies.set("characters", newTab, { expires: 7 });
+    }
+  };
+
   return (
-    <section className="character-section">
-      <div className="container">
+    <>
+      <div>
         <div>
+          <div className="character-details">
+            <div>
+              <h3>ESSENTIAL READING</h3>
+            </div>
+            <h2>{character.name}</h2>
+            <p className="description">{character.description}</p>
+            <button onClick={handleClick}>ADD TO FAVORITES </button>
+          </div>
+        </div>
+        <div className="character-image">
           <img
             src={
               character.thumbnail.path ===
@@ -16,27 +46,27 @@ const CharacterContent = ({ character, comics }) => {
             alt=""
           />
         </div>
-        <div>
-          <div>
-            <h2>{character.name}</h2>
-            <p>{character.description}</p>
-          </div>
-          <div>
-            {comics.map((item, index) => {
-              return (
-                <>
-                  <img
-                    src={item.thumbnail.path + "." + item.thumbnail.extension}
-                    alt=""
-                  />
+      </div>
+
+      <div className="character-comics">
+        <div className="container">
+          {comics.map((item, index) => {
+            return (
+              <div className="comic-item">
+                <img
+                  className="comic-img"
+                  src={item.thumbnail.path + "." + item.thumbnail.extension}
+                  alt=""
+                />
+                <div>
                   <p>{item.title}</p>
-                </>
-              );
-            })}
-          </div>
+                </div>
+              </div>
+            );
+          })}
         </div>
       </div>
-    </section>
+    </>
   );
 };
 

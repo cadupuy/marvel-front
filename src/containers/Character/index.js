@@ -5,7 +5,12 @@ import CharacterPage from "../../components/CharacterContent";
 import "./index.css";
 import axios from "axios";
 
-const Character = ({ apiUrl }) => {
+const Character = ({
+  apiUrl,
+  favoriteCharacter,
+  setFavoriteCharacters,
+  favoriteCharacters,
+}) => {
   const [isLoading, setIsLoading] = useState(true);
   const [character, setCharacter] = useState([]);
   const [comics, setComics] = useState([]);
@@ -29,7 +34,7 @@ const Character = ({ apiUrl }) => {
       }
     };
     fetchData();
-  }, [id]);
+  }, [id, favoriteCharacters]);
 
   return isLoading ? (
     <div className="loading">
@@ -43,7 +48,13 @@ const Character = ({ apiUrl }) => {
     </div>
   ) : (
     <section className="character-section">
-      <CharacterPage character={character.results[0]} comics={comics.results} />
+      <CharacterPage
+        character={character.results[0]}
+        comics={comics.results}
+        favoriteCharacter={favoriteCharacter}
+        favoriteCharacters={favoriteCharacters}
+        setFavoriteCharacters={setFavoriteCharacters}
+      />
     </section>
   );
 };

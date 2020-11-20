@@ -2,7 +2,15 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./index.css";
 
-const Header = () => {
+const Header = ({ setIsModal, setUser, token }) => {
+  const handleClick = () => {
+    setIsModal(true);
+  };
+
+  const handleUser = () => {
+    setUser(null);
+  };
+
   return (
     <header>
       <div>
@@ -21,12 +29,14 @@ const Header = () => {
           <Link to="/comics">
             <li>Comics</li>
           </Link>
-          <Link to="/comics">
+          <Link to="/favorites">
             <li>My Favorites</li>
           </Link>
-          <Link to="/comics">
-            <li>Login</li>
-          </Link>
+          {token ? (
+            <li onClick={handleUser}>Déconnexion</li>
+          ) : (
+            <li onClick={handleClick}>Login</li>
+          )}
         </ul>
       </nav>
     </header>

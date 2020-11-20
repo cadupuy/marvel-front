@@ -1,44 +1,191 @@
 .character-section {
-  margin-top: -25px;
-  position: relative;
-  background-image: url(https://marvel-jolisdegats.netlify.app/static/media/background.cbd090c1.gif);
-  background-repeat: no-repeat;
-  background-position: center;
-  padding-bottom: 50px;
-  margin-bottom: -80px;
-  color: white;
-  padding-top: 40px;
-}
-
-.character-section .container {
   display: flex;
-  justify-content: center;
-  background-color: rgba(0, 0, 0, 0.4);
-  width: 80%;
-  margin: auto;
-  padding-top: 50px;
+  flex-direction: column;
+  width: 100%;
+  margin-top: -25px;
 }
 
-.character-section .container > div:first-child img {
-  margin-right: 50px;
-  border-radius: 10px;
-  width: 500px;
-  height: 500px;
+.character-section > div {
+  flex: 1;
+}
+
+.character-section > div:first-child {
+  position: relative;
+}
+
+.character-section > div:first-child {
+  display: flex;
+  color: white;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.character-section .character-details {
+  position: relative;
+  width: 60%;
+}
+
+.character-section .character-details > div:first-child {
+  width: 60%;
+}
+
+.character-section > div:first-child > div:first-child {
+  z-index: 99;
+  width: 45%;
+  display: flex;
+  margin-left: 100px;
+  justify-content: center;
+  margin-top: 70px;
+}
+
+.character-section > div:first-child {
+  background-color: #151515;
+  width: 100%;
+}
+
+.character-section > div:first-child button {
+  background-color: inherit;
+  color: white;
+  border: 1px solid white;
+  padding: 15px 25px;
+  margin-top: 30px;
+  cursor: pointer;
+  font-size: 14px;
+  font-family: "Roboto", sans-serif;
+  position: relative;
+  transition: 0.3s all ease;
+  outline: none;
+}
+
+.character-section > div:first-child button:hover {
+  background-color: #f11e23;
+}
+
+.character-section > div:last-child {
+  background-color: white;
+  padding-top: 28px;
+}
+
+.character-section .character-image {
+  position: relative;
+  width: 60%;
+}
+
+.character-section > div > div h2 {
+  font-size: 42px;
+  line-height: 40px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding-bottom: 20px;
+  margin-top: 5px;
+}
+
+.character-section > div > div h3 {
+  font-size: 18px;
+  line-height: 19px;
+  letter-spacing: 4px;
+  padding-bottom: 30px;
+}
+
+.character-section > div > div .description {
+  font-family: "Roboto";
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: 0.5px;
+}
+
+.character-section > div:first-child img {
+  height: 550px;
+  width: 100%;
   object-fit: cover;
 }
 
-.character-section .container > div:nth-child(2) p {
-  margin-right: 30px;
-  font-size: 14px;
-  letter-spacing: 0.5px;
-  line-height: 21px;
-  font-family: "Open Sans", sans-serif;
+/* COMICS SECTION */
+
+.character-comics {
+  width: 65%;
+  margin-top: -100px;
+  z-index: 99;
+  margin: -80px auto;
 }
 
-.character-section h2 {
-  font-size: 50px;
-  letter-spacing: 0.5px;
-  font-weight: bold;
-  text-transform: uppercase;
-  margin-bottom: 20px;
+.character-comics .container {
+  display: flex;
+  width: 98%;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: auto;
+}
+
+.character-comics .container > div {
+  flex: 15%;
+}
+
+/* SPECIFIC STYLING */
+
+.character-section .character-image::after {
+  content: "";
+  background-color: #151515;
+  transform: rotate(-15deg);
+  left: -50px;
+  top: -50px;
+  width: 150px;
+  height: 150%;
+  position: absolute;
+}
+
+.character-section > div:first-child::after {
+  content: "";
+  position: absolute;
+  background-color: white;
+  height: 100px;
+  bottom: -70px;
+  width: 11000000%;
+  transform: rotate(-2deg);
+}
+
+.character-section > div > div h3::after {
+  content: "";
+  width: 30px;
+  height: 2px;
+  background-color: #c6a972;
+  transform: rotate(-45deg);
+  position: absolute;
+  left: 45px;
+  top: -18px;
+}
+
+.character-section > div > div h3::before {
+  content: "";
+  width: 30px;
+  height: 2px;
+  background-color: #c6a972;
+  transform: rotate(-45deg);
+  position: absolute;
+  left: 0px;
+  top: 33px;
+}
+
+.character-section > div:first-child button::after {
+  content: "";
+  width: 20px;
+  height: 20px;
+  background-color: #151515;
+  transform: rotate(-45deg);
+  border-top: 1px solid white;
+  position: absolute;
+  top: 36px;
+  right: -10px;
+}
+
+.character-section > div:first-child button::before {
+  content: "";
+  width: 20px;
+  height: 20px;
+  background-color: #151515;
+  transform: rotate(-45deg);
+  border-bottom: 1px solid white;
+  position: absolute;
+  top: -11px;
+  left: -10px;
 }
