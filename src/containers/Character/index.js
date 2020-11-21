@@ -5,12 +5,7 @@ import CharacterPage from "../../components/CharacterContent";
 import "./index.css";
 import axios from "axios";
 
-const Character = ({
-  apiUrl,
-  favoriteCharacter,
-  setFavoriteCharacters,
-  favoriteCharacters,
-}) => {
+const Character = ({ apiUrl, token }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [character, setCharacter] = useState([]);
   const [comics, setComics] = useState([]);
@@ -19,12 +14,10 @@ const Character = ({
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(
-          `http://localhost:3001/character/${id}`
-        );
+        const response = await axios.get(`${apiUrl}/character/${id}`);
 
         const responseComics = await axios.get(
-          `http://localhost:3001/character/${id}/comics`
+          `${apiUrl}/character/${id}/comics`
         );
         setComics(responseComics.data.data);
         setCharacter(response.data.data);
@@ -34,7 +27,7 @@ const Character = ({
       }
     };
     fetchData();
-  }, [id, favoriteCharacters]);
+  }, [id, apiUrl]);
 
   return isLoading ? (
     <div className="loading">
@@ -51,9 +44,7 @@ const Character = ({
       <CharacterPage
         character={character.results[0]}
         comics={comics.results}
-        favoriteCharacter={favoriteCharacter}
-        favoriteCharacters={favoriteCharacters}
-        setFavoriteCharacters={setFavoriteCharacters}
+        token={token}
       />
     </section>
   );

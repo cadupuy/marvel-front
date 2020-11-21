@@ -1,26 +1,51 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 import "./index.css";
 
-import Cookies from "js-cookie";
+const CharacterContent = ({ character, comics, token }) => {
+  const [favorites, setFavorites] = useState([]);
+  const [favoriteUpdate, setfavoriteUpdate] = useState([]);
 
-const CharacterContent = ({
-  character,
-  comics,
-  favoriteCharacter,
-  favoriteCharacters,
-  setFavoriteCharacters,
-}) => {
-  const handleClick = () => {
-    if (favoriteCharacters.indexOf(character.id) === -1) {
-      favoriteCharacter(character.id);
-    } else {
-      let index = favoriteCharacters.indexOf(character.id);
-      const newTab = [...favoriteCharacters];
-      newTab.splice(index, 1);
-      setFavoriteCharacters(newTab);
-      Cookies.set("characters", newTab, { expires: 7 });
+  const handleClick = async () => {
+    try {
+      const response = await axios.post(
+        `http://localhost:3001/user/favorites/update`,
+        {
+          favoriteCharacter: character.id,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      setfavoriteUpdate(response.data.favorites.favoriteCharacters);
+    } catch (error) {
+      console.log(error.message);
     }
   };
+
+  useEffect(() => {
+    if (token) {
+      const fetchData = async () => {
+        try {
+          const response = await axios.get(
+            `http://localhost:3001/user/favorites`,
+            {
+              headers: {
+                Authorization: `Bearer ${token}`,
+              },
+            }
+          );
+          setFavorites(response.data.favorites.favoriteCharacters);
+        } catch (error) {
+          console.log(error.message);
+        }
+      };
+
+      fetchData();
+    }
+  }, [favoriteUpdate, token]);
 
   return (
     <>
@@ -30,9 +55,17 @@ const CharacterContent = ({
             <div>
               <h3>ESSENTIAL READING</h3>
             </div>
+
             <h2>{character.name}</h2>
             <p className="description">{character.description}</p>
-            <button onClick={handleClick}>ADD TO FAVORITES </button>
+
+            {favorites.indexOf(character.id) !== -1 ? (
+              <button className="favorited" onClick={handleClick}>
+                FAVORITED
+              </button>
+            ) : (
+              <button onClick={handleClick}>ADD TO FAVORITES</button>
+            )}
           </div>
         </div>
         <div className="character-image">

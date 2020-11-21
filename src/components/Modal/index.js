@@ -1,20 +1,19 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { useHistory, useLocation } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import axios from "axios";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./index.css";
 
 const Login = ({ setUser, apiUrl, setIsModal }) => {
   let history = useHistory();
-  const location = useLocation();
-  const fromFavs = location.state?.fromFavs ? true : false;
-
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
   const handleClose = () => {
     setIsModal(false);
+    document.body.style.overflow = "";
   };
 
   const handleEmail = (ev) => {
@@ -29,7 +28,7 @@ const Login = ({ setUser, apiUrl, setIsModal }) => {
     ev.preventDefault();
 
     try {
-      const response = await axios.post(`http://localhost:3001/user/login`, {
+      const response = await axios.post(`${apiUrl}/user/login`, {
         email: email,
         password: password,
       });
@@ -38,8 +37,8 @@ const Login = ({ setUser, apiUrl, setIsModal }) => {
         const token = response.data.token;
         setUser(token);
         setIsModal(false);
-
-        // history.push(fromPublish ? "/favorites" : "/");
+        document.body.style.overflow = "";
+        history.push("/");
       }
     } catch (error) {
       console.log(error);
@@ -50,11 +49,14 @@ const Login = ({ setUser, apiUrl, setIsModal }) => {
     <>
       <section className="login-form">
         <div className="container">
-          <h2>Se connecter</h2>
+          <img
+            src="https://marvel-jolisdegats.netlify.app/static/media/Marvel-Comics-Logo.575beca3.png"
+            alt=""
+          />
           <form onSubmit={handleSubmit}>
             <input
               className={error !== "" ? "input-error" : "input-modal"}
-              type="text"
+              type="email"
               onChange={handleEmail}
               value={email}
               placeholder="Adresse email"
@@ -66,18 +68,20 @@ const Login = ({ setUser, apiUrl, setIsModal }) => {
               value={password}
               placeholder="Mot de passe"
             />
-            <input type="submit" value="Se connecter" />
+            <input type="submit" value="SE CONNECTER" />
           </form>
-          <div>
-            <Link className="signup-text" to="/signup">
-              Pas encore de compte ? Inscris-toi !
-            </Link>
-          </div>
+
           <div>
             <p className="error-message">{error}</p>
           </div>
+          <hr />
+          <div>
+            <Link className="signup-text" to="/signup">
+              <button>S'INSCRIRE</button>
+            </Link>
+          </div>
+          <FontAwesomeIcon onClick={handleClose} icon="times" />
         </div>
-        <p onClick={handleClose}> XXXX</p>
       </section>
     </>
   );

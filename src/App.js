@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./App.css";
 import {
   BrowserRouter as Router,
@@ -13,16 +13,14 @@ import Header from "./components/Header";
 import Character from "./containers/Character";
 import Favorites from "./containers/Favorites";
 import Modal from "./components/Modal";
-import axios from "axios";
 import Cookies from "js-cookie";
 
-function App() {
-  const [isLoading, setIsLoading] = useState(true);
-  const [favorites, setFavorites] = useState([]);
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { faTimes } from "@fortawesome/free-solid-svg-icons";
+library.add(faTimes);
 
+function App() {
   const [isModal, setIsModal] = useState(false);
-  const [favoriteCharacters, setFavoriteCharacters] = useState([]);
-  const [favoriteComics, setFavoriteComics] = useState([]);
   const [token, setToken] = useState(Cookies.get("tokenUser") || null);
 
   const setUser = (tokenToSet) => {
@@ -35,46 +33,31 @@ function App() {
     }
   };
 
-  const favoriteCharacter = (item) => {
-    let newTab = [...favoriteCharacters];
-    newTab.push(item);
-    setFavoriteCharacters(newTab);
-  };
-
-  const favoriteComic = (item) => {
-    let newTab = [...favoriteComics];
-    newTab.push(item);
-    setFavoriteComics(newTab);
-  };
-
-  const apiUrl = "http://localhost:3001/";
+  const apiUrl = "https://marvel-clone-api.herokuapp.com";
 
   return (
     <Router>
-      {isModal === true && <Modal setIsModal={setIsModal} setUser={setUser} />}
+      {isModal === true && (
+        <Modal setIsModal={setIsModal} setUser={setUser} apiUrl={apiUrl} />
+      )}
 
       <Header setIsModal={setIsModal} setUser={setUser} token={token} />
       <Switch>
         <Route path="/character/:id">
-          <Character
-            apiUrl={apiUrl}
-            favoriteCharacter={favoriteCharacter}
-            favoriteCharacters={favoriteCharacters}
-            setFavoriteCharacters={setFavoriteCharacters}
-          />
+          <Character apiUrl={apiUrl} token={token} />
         </Route>
         <Route path="/comics">
           <Comics apiUrl={apiUrl} />
         </Route>
         <Route exact path="/favorites">
           {token ? (
-            <Favorites favoriteCharacters={favoriteCharacters} />
+            <Favorites token={token} apiUrl={apiUrl} />
           ) : (
-            <Redirect to="/login" />
+            <Redirect to="/" />
           )}
         </Route>
         <Route path="/characters">
-          <Home />
+          <Home apiUrl={apiUrl} />
         </Route>
         <Route path="/">
           <Home apiUrl={apiUrl} />

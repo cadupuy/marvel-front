@@ -1,11 +1,14 @@
 header {
   background-color: #202020;
-  margin-bottom: 25px;
   color: white;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  position: fixed;
+  top: 0;
+  z-index: 200;
+  width: 100%;
 }
 
 header ul {

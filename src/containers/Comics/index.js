@@ -13,7 +13,6 @@ const Characters = ({ apiUrl }) => {
   const [comics, setComics] = useState([]);
   const [pageMax, setPageMax] = useState(0);
   const [page, setPage] = useState(1);
-  const tab = [];
   const limit = 100;
 
   const handlePageClick = (event) => {
@@ -25,7 +24,7 @@ const Characters = ({ apiUrl }) => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `${apiUrl}comics?page=${page}&title=${searchComic}`
+          `${apiUrl}/comics?page=${page}&title=${searchComic}`
         );
         setPageMax(Math.ceil(Number(response.data.data.total) / limit));
 
@@ -37,7 +36,7 @@ const Characters = ({ apiUrl }) => {
     };
 
     fetchData();
-  }, [searchComic, page]);
+  }, [searchComic, page, apiUrl]);
 
   return isLoading ? (
     <div className="loading">

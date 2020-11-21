@@ -24,7 +24,7 @@ const Home = ({ apiUrl }) => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:3001?page=${page}&name=${searchCharacter}`
+          `${apiUrl}?page=${page}&name=${searchCharacter}`
         );
         setCharacters(response.data.data);
         setPageMax(Math.ceil(Number(response.data.data.total) / limit));
@@ -36,7 +36,7 @@ const Home = ({ apiUrl }) => {
     };
 
     fetchData();
-  }, [page, searchCharacter]);
+  }, [page, searchCharacter, apiUrl]);
 
   return isLoading ? (
     <div className="loading">

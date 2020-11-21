@@ -5,6 +5,7 @@ import "./index.css";
 const Header = ({ setIsModal, setUser, token }) => {
   const handleClick = () => {
     setIsModal(true);
+    document.body.style.overflow = "hidden";
   };
 
   const handleUser = () => {

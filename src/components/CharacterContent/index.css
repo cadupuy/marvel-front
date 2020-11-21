@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-  margin-top: -25px;
+  margin-top: 95px;
 }
 
 .character-section > div {
@@ -98,6 +98,10 @@
   height: 550px;
   width: 100%;
   object-fit: cover;
+}
+
+.character-section .favorited {
+  background-color: #f11e23 !important;
 }
 
 /* COMICS SECTION */
