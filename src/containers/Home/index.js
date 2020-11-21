@@ -5,11 +5,7 @@ import CharacterItem from "../../components/CharacterItem";
 import Banner from "../../components/Banner";
 import SearchBar from "../../components/SearchCharacter";
 import "./index.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faChevronLeft,
-  faChevronRight,
-} from "@fortawesome/free-solid-svg-icons";
+import ReactPaginate from "react-paginate";
 
 const Home = ({ apiUrl }) => {
   const [isLoading, setIsLoading] = useState(true);
@@ -17,24 +13,13 @@ const Home = ({ apiUrl }) => {
   const [characters, setCharacters] = useState([]);
   const [pageMax, setPageMax] = useState(0);
   const [page, setPage] = useState(1);
-  const tab = [];
   const limit = 100;
 
-  const renderPages = () => {
-    for (let i = 1; i <= pageMax; i++) {
-      tab.push(
-        <span
-          className={i === page && "active-page"}
-          onClick={() => {
-            setPage(i);
-          }}
-        >
-          {i}
-        </span>
-      );
-    }
-    return tab;
+  const handlePageClick = (event) => {
+    console.log(event);
+    setPage(event.selected + 1);
   };
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -75,7 +60,9 @@ const Home = ({ apiUrl }) => {
 
       <main>
         <div className="main-navigation">
-          <h2>MARVEL CHARACTERS LIST</h2>
+          <div className="section-title">
+            <h2>MARVEL CHARACTERS LIST</h2>
+          </div>
           <div>
             <SearchBar
               searchCharacter={searchCharacter}
@@ -92,27 +79,18 @@ const Home = ({ apiUrl }) => {
         </section>
 
         <div className="pages">
-          <FontAwesomeIcon
-            className={page === 1 ? "display-none" : ""}
-            onClick={() => {
-              if (page > 1) {
-                setIsLoading(true);
-
-                setPage(page - 1);
-              }
-            }}
-            icon={faChevronLeft}
-          />
-          {renderPages()}
-
-          <FontAwesomeIcon
-            className={page === pageMax ? "display-none" : ""}
-            onClick={() => {
-              if (page < pageMax) {
-                setPage(page + 1);
-              }
-            }}
-            icon={faChevronRight}
+          <ReactPaginate
+            previousLabel={"PREV"}
+            nextLabel={"NEXT"}
+            breakLabel={"..."}
+            breakClassName={"break-me"}
+            pageCount={pageMax}
+            marginPagesDisplayed={1}
+            pageRangeDisplayed={5}
+            onPageChange={handlePageClick}
+            containerClassName={"pagination"}
+            subContainerClassName={"pages"}
+            activeClassName={"active"}
           />
         </div>
       </main>

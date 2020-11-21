@@ -21,12 +21,11 @@ const CharacterItem = ({ characters }) => {
               alt=""
             />
           </div>
-          {/* <div className="red-effect"></div> */}
           <div className="content">
             <p>{item.name}</p>
+            <div className="red"></div>
           </div>
 
-          {/* <FontAwesomeIcon icon={faStar} /> */}
           <div className="bottom-right"></div>
         </div>
       </Link>

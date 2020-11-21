@@ -16,40 +16,6 @@ a {
   align-items: center;
 }
 
-.pages {
-  margin-top: 50px;
-  display: flex;
-  justify-content: center;
-}
-
-.pages span {
-  cursor: pointer;
-  font-size: 18px;
-}
-
-.pages span:hover {
-  color: #e62529;
-}
-
-.pages .active-page {
-  font-weight: bold;
-}
-.pages span:not(:last-child) {
-  margin-right: 30px;
-}
-
-.pages svg {
-  cursor: pointer;
-}
-
-.pages svg:first-child {
-  margin-right: 30px;
-}
-
-.pages .display-none {
-  display: none;
-}
-
 .main-navigation {
   padding: 0 15px;
 }
@@ -64,16 +30,44 @@ a {
   margin-bottom: 15px;
   border-top: 2px solid lightgrey;
   padding-top: 25px;
-  margin-top: -2px;
+  margin-top: -32px;
+  z-index: -1;
 }
 
 .main-navigation > div:last-child > p {
   color: rgb(174, 174, 174);
 }
 
-.main-navigation > h2 {
+.main-navigation > div h2 {
   margin-bottom: 15px;
   color: #202020;
   font-size: 26px;
   letter-spacing: 1px;
+}
+
+.main-navigation > div {
+  position: relative;
+  margin-bottom: 30px;
+}
+
+.main-navigation > .section-title::before {
+  content: "";
+  width: 30px;
+  height: 2px;
+  background-color: #c6a972;
+  transform: rotate(-45deg);
+  position: absolute;
+  left: 48px;
+  top: -18px;
+}
+
+.main-navigation > .section-title::after {
+  content: "";
+  width: 30px;
+  height: 2px;
+  background-color: #c6a972;
+  transform: rotate(-45deg);
+  position: absolute;
+  left: -8px;
+  top: 40px;
 }

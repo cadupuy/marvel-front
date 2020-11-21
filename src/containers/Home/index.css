@@ -16,3 +16,20 @@ main {
   max-width: 1200px;
   margin-top: 80px;
 }
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  padding-top: 30px;
+}
+
+.pagination a {
+  padding: 0 13px;
+  outline: none;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.active {
+  font-weight: bold;
+}

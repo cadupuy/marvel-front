@@ -52,7 +52,7 @@ const CharacterContent = ({
         <div className="container">
           {comics.map((item, index) => {
             return (
-              <div className="comic-item">
+              <div key={index} className="comic-item">
                 <img
                   className="comic-img"
                   src={item.thumbnail.path + "." + item.thumbnail.extension}

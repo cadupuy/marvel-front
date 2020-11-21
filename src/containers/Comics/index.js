@@ -3,14 +3,9 @@ import axios from "axios";
 import Loader from "react-loader-spinner";
 import ComicItem from "../../components/ComicItem";
 import Banner from "../../components/Banner";
-
+import ReactPaginate from "react-paginate";
 import SearchComic from "../../components/SearchComic";
 import "./index.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faChevronLeft,
-  faChevronRight,
-} from "@fortawesome/free-solid-svg-icons";
 
 const Characters = ({ apiUrl }) => {
   const [searchComic, setSearchComic] = useState("");
@@ -21,20 +16,9 @@ const Characters = ({ apiUrl }) => {
   const tab = [];
   const limit = 100;
 
-  const renderPages = () => {
-    for (let i = 1; i <= pageMax; i++) {
-      tab.push(
-        <span
-          className={i === page && "active-page"}
-          onClick={() => {
-            setPage(i);
-          }}
-        >
-          {i}
-        </span>
-      );
-    }
-    return tab;
+  const handlePageClick = (event) => {
+    console.log(event);
+    setPage(event.selected + 1);
   };
 
   useEffect(() => {
@@ -76,7 +60,9 @@ const Characters = ({ apiUrl }) => {
       />
       <main>
         <div className="main-navigation">
-          <h2>MARVEL COMICS LIST</h2>
+          <div className="section-title">
+            <h2>MARVEL COMICS LIST</h2>
+          </div>
           <div>
             <SearchComic
               searchComic={searchComic}
@@ -92,30 +78,19 @@ const Characters = ({ apiUrl }) => {
           <ComicItem comics={comics.results} />
         </section>
 
-        <div className="pages">
-          <FontAwesomeIcon
-            className={page === 1 ? "display-none" : ""}
-            onClick={() => {
-              if (page > 1) {
-                setPage(page - 1);
-              }
-            }}
-            icon={faChevronLeft}
-          />
-          {renderPages()}
-
-          <FontAwesomeIcon
-            className={page === pageMax ? "display-none" : ""}
-            onClick={() => {
-              if (page < pageMax) {
-                setIsLoading(true);
-
-                setPage(page + 1);
-              }
-            }}
-            icon={faChevronRight}
-          />
-        </div>
+        <ReactPaginate
+          previousLabel={"PREV"}
+          nextLabel={"NEXT"}
+          breakLabel={"..."}
+          breakClassName={"break-me"}
+          pageCount={pageMax}
+          marginPagesDisplayed={1}
+          pageRangeDisplayed={5}
+          onPageChange={handlePageClick}
+          containerClassName={"pagination"}
+          subContainerClassName={"pages pagination"}
+          activeClassName={"active"}
+        />
       </main>
     </>
   );
