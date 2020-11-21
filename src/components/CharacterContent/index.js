@@ -2,14 +2,14 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./index.css";
 
-const CharacterContent = ({ character, comics, token }) => {
+const CharacterContent = ({ character, comics, token, apiUrl }) => {
   const [favorites, setFavorites] = useState([]);
   const [favoriteUpdate, setfavoriteUpdate] = useState([]);
 
   const handleClick = async () => {
     try {
       const response = await axios.post(
-        `http://localhost:3001/user/favorites/update`,
+        `${apiUrl}/user/favorites/update`,
         {
           favoriteCharacter: character.id,
         },
@@ -29,14 +29,11 @@ const CharacterContent = ({ character, comics, token }) => {
     if (token) {
       const fetchData = async () => {
         try {
-          const response = await axios.get(
-            `http://localhost:3001/user/favorites`,
-            {
-              headers: {
-                Authorization: `Bearer ${token}`,
-              },
-            }
-          );
+          const response = await axios.get(`${apiUrl}/user/favorites`, {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          });
           setFavorites(response.data.favorites.favoriteCharacters);
         } catch (error) {
           console.log(error.message);

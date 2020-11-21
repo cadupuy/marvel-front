@@ -45,6 +45,7 @@ const Character = ({ apiUrl, token }) => {
         character={character.results[0]}
         comics={comics.results}
         token={token}
+        apiUrl={apiUrl}
       />
     </section>
   );
