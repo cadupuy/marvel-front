@@ -40,6 +40,26 @@ const Favorites = ({ apiUrl, token }) => {
         timeout={99999}
       />
     </div>
+  ) : favorites.length === 0 ? (
+    <div className="empty-favorites">
+      <div className="container">
+        <div>
+          <h2>OÙ SONT LES HÉROS ?</h2>
+          <h3>Vous n'avez encore aucun favori...</h3>
+          <p>
+            Rendez-vous dans la sections comics et sur les pages des personnages
+            afin de pouvoir enregistrer vos préférences. Tous vos favoris
+            apparaîtront sur cette page.
+          </p>
+        </div>
+        <div>
+          <img
+            src="https://i.annihil.us/u/prod/marvel/html_pages_assets/error-pages/prod/iron-man-char.72fe5e86.jpg"
+            alt=""
+          />
+        </div>
+      </div>
+    </div>
   ) : (
     <>
       <Banner

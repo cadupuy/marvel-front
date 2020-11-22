@@ -9,11 +9,11 @@ a {
 
 .loading {
   width: 100vw;
-  height: 60vh;
+  height: 83vh;
   display: flex;
   justify-content: center;
-  margin-top: 100px;
   align-items: center;
+  margin-bottom: -80px;
 }
 
 .main-navigation {

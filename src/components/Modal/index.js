@@ -78,9 +78,9 @@ const Login = ({ setUser, apiUrl, setIsModal, setIsModalSignUp }) => {
           </div>
           <div className="hr"></div>
           <div>
-            <Link className="signup-text" to="">
+            <div className="signup-text">
               <button onClick={handleSignUp}>S'INSCRIRE</button>
-            </Link>
+            </div>
           </div>
           <FontAwesomeIcon onClick={handleClose} icon="times" />
         </div>
