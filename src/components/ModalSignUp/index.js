@@ -5,15 +5,20 @@ import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./index.css";
 
-const Login = ({ setUser, apiUrl, setIsModal }) => {
+const SignUp = ({ setUser, apiUrl, setIsModal, setIsModalSignUp }) => {
   let history = useHistory();
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
+  const handleLogin = () => {
+    setIsModalSignUp(false);
+    setIsModal(true);
+  };
+
   const handleClose = () => {
-    setIsModal(false);
+    setIsModalSignUp(false);
   };
 
   const handleEmail = (ev) => {
@@ -41,7 +46,7 @@ const Login = ({ setUser, apiUrl, setIsModal }) => {
       if (response.data.token) {
         const token = response.data.token;
         setUser(token);
-        setIsModal(false);
+        setIsModalSignUp(false);
         history.push("/");
       }
     } catch (error) {
@@ -60,17 +65,17 @@ const Login = ({ setUser, apiUrl, setIsModal }) => {
           <form onSubmit={handleSubmit}>
             <input
               className={error !== "" ? "input-error" : "input-modal"}
-              type="email"
-              onChange={handleEmail}
-              value={email}
-              placeholder="Adresse email"
-            />
-            <input
-              className={error !== "" ? "input-error" : "input-modal"}
               type="text"
               onChange={handleUsername}
               value={username}
               placeholder="Nom d'utilisateur"
+            />
+            <input
+              className={error !== "" ? "input-error" : "input-modal"}
+              type="email"
+              onChange={handleEmail}
+              value={email}
+              placeholder="Adresse email"
             />
             <input
               className={error !== "" ? "input-error" : "input-modal"}
@@ -79,14 +84,18 @@ const Login = ({ setUser, apiUrl, setIsModal }) => {
               value={password}
               placeholder="Mot de passe"
             />
-            <input type="submit" value="SE CONNECTER" />
+            <input type="submit" value="S'INSCRIRE" />
           </form>
 
           <div>
             <p className="error-message">{error}</p>
           </div>
-
-          <p>Already have an account? Sign In</p>
+          <div className="create-account">
+            <p>
+              Already have an account?{" "}
+              <span onClick={handleLogin}>Sign In</span>
+            </p>
+          </div>
 
           <FontAwesomeIcon onClick={handleClose} icon="times" />
         </div>
@@ -95,4 +104,4 @@ const Login = ({ setUser, apiUrl, setIsModal }) => {
   );
 };
 
-export default Login;
+export default SignUp;

@@ -5,7 +5,7 @@ import axios from "axios";
 import CharacterPage from "../../components/CharacterContent";
 import "./index.css";
 
-const Character = ({ apiUrl, token }) => {
+const Character = ({ apiUrl, token, setIsModal }) => {
   const [isLoading, setIsLoading] = useState(true);
   // Return all characters from Marvel API
   const [character, setCharacter] = useState([]);
@@ -49,6 +49,7 @@ const Character = ({ apiUrl, token }) => {
         comics={comics.results}
         token={token}
         apiUrl={apiUrl}
+        setIsModal={setIsModal}
       />
     </section>
   );

@@ -5,12 +5,16 @@ import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./index.css";
 
-const Login = ({ setUser, apiUrl, setIsModal }) => {
+const Login = ({ setUser, apiUrl, setIsModal, setIsModalSignUp }) => {
   let history = useHistory();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
+  const handleSignUp = () => {
+    setIsModal(false);
+    setIsModalSignUp(true);
+  };
   const handleClose = () => {
     setIsModal(false);
   };
@@ -75,7 +79,7 @@ const Login = ({ setUser, apiUrl, setIsModal }) => {
           <div className="hr"></div>
           <div>
             <Link className="signup-text" to="">
-              <button>S'INSCRIRE</button>
+              <button onClick={handleSignUp}>S'INSCRIRE</button>
             </Link>
           </div>
           <FontAwesomeIcon onClick={handleClose} icon="times" />

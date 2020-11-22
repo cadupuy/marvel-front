@@ -6,6 +6,8 @@ import {
   Route,
   Redirect,
 } from "react-router-dom";
+import Cookies from "js-cookie";
+
 import Home from "./containers/Home";
 import Comics from "./containers/Comics";
 import Footer from "./components/Footer";
@@ -13,7 +15,7 @@ import Header from "./components/Header";
 import Character from "./containers/Character";
 import Favorites from "./containers/Favorites";
 import Modal from "./components/Modal";
-import Cookies from "js-cookie";
+import ModalSignUp from "./components/ModalSignUp";
 
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
@@ -21,6 +23,7 @@ library.add(faTimes);
 
 function App() {
   const [isModal, setIsModal] = useState(false);
+  const [isModalSignUp, setIsModalSignUp] = useState(false);
   const [token, setToken] = useState(Cookies.get("tokenUser") || null);
 
   const setUser = (tokenToSet) => {
@@ -33,7 +36,7 @@ function App() {
     }
   };
 
-  if (isModal) {
+  if (isModal || isModalSignUp) {
     document.body.style.overflow = "hidden";
   } else {
     document.body.style.overflow = "";
@@ -46,13 +49,27 @@ function App() {
   return (
     <Router>
       {isModal === true && (
-        <Modal setIsModal={setIsModal} setUser={setUser} apiUrl={apiUrl} />
+        <Modal
+          setIsModal={setIsModal}
+          setUser={setUser}
+          apiUrl={apiUrl}
+          setIsModalSignUp={setIsModalSignUp}
+        />
+      )}
+
+      {isModalSignUp === true && (
+        <ModalSignUp
+          setIsModalSignUp={setIsModalSignUp}
+          setUser={setUser}
+          apiUrl={apiUrl}
+          setIsModal={setIsModal}
+        />
       )}
 
       <Header setIsModal={setIsModal} setUser={setUser} token={token} />
       <Switch>
         <Route path="/character/:id">
-          <Character apiUrl={apiUrl} token={token} />
+          <Character apiUrl={apiUrl} token={token} setIsModal={setIsModal} />
         </Route>
         <Route path="/comics">
           <Comics apiUrl={apiUrl} />

@@ -3,7 +3,7 @@ import axios from "axios";
 import ComicItem from "../../components/ComicItem";
 import "./index.css";
 
-const CharacterContent = ({ character, comics, token, apiUrl }) => {
+const CharacterContent = ({ character, comics, token, apiUrl, setIsModal }) => {
   const [favorites, setFavorites] = useState([]);
   const [favoriteUpdate, setfavoriteUpdate] = useState([]);
 
@@ -35,6 +35,8 @@ const CharacterContent = ({ character, comics, token, apiUrl }) => {
       } catch (error) {
         console.log(error.message);
       }
+    } else {
+      setIsModal(true);
     }
   };
 
