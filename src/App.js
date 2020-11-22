@@ -41,9 +41,8 @@ function App() {
   } else {
     document.body.style.overflow = "";
   }
-  const apiUrl = "http://localhost:3001";
 
-  // const apiUrl = "https://marvel-clone-api.herokuapp.com";
+  const apiUrl = "https://marvel-clone-api.herokuapp.com";
 
   return (
     <Router>
