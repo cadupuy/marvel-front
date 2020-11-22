@@ -22,16 +22,17 @@
 
 .character-section .character-details {
   position: relative;
-  width: 60%;
+  width: 70%;
+  padding-left: 100px;
 }
 
-.character-section .character-details > div:first-child {
+/* .character-section .character-details > div:first-child {
   width: 60%;
-}
+} */
 
 .character-section > div:first-child > div:first-child {
   z-index: 99;
-  width: 45%;
+  width: 42%;
   display: flex;
   margin-left: 100px;
   justify-content: center;
@@ -122,8 +123,9 @@
 }
 
 .character-comics .container > div {
-  flex: 15%;
+  flex: 17%;
   max-width: 19%;
+  flex-shrink: 0;
 }
 
 /* SPECIFIC STYLING */
@@ -158,6 +160,7 @@
   position: absolute;
   left: 48px;
   top: -18px;
+  margin-left: 100px;
 }
 
 .character-section > div > div h3::before {
@@ -169,6 +172,7 @@
   position: absolute;
   left: 0px;
   top: 33px;
+  margin-left: 100px;
 }
 
 .character-section > div:first-child button::after {

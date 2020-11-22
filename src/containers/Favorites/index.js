@@ -65,9 +65,6 @@ const Favorites = ({ apiUrl, token }) => {
       <Banner
         title="MY FAVORITES"
         description="Get hooked on a hearty helping of heroes and villains from the humble House of Ideas!"
-        image={
-          "https://terrigen-cdn-dev.marvel.com/content/prod/1x/characters_art_mas_dsk_01.jpg"
-        }
       />
       <main>
         <div className="favorite-title">

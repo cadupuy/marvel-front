@@ -80,7 +80,7 @@ const CharacterContent = ({ character, comics, token, apiUrl, setIsModal }) => {
                   <div key={index}>
                     {(isFavorite = true)}
                     <button className="favorited" onClick={handleClick}>
-                      FAVORITED
+                      FAVORITE
                     </button>
                   </div>
                 )

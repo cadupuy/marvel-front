@@ -56,9 +56,6 @@ const Home = ({ apiUrl }) => {
       <Banner
         title="MARVEL CHARACTERS"
         description="Get hooked on a hearty helping of heroes and villains from the humble House of Ideas!"
-        image={
-          "https://terrigen-cdn-dev.marvel.com/content/prod/1x/characters_art_mas_dsk_01.jpg"
-        }
       />
 
       <main>
