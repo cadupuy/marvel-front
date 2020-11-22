@@ -71,3 +71,22 @@ a {
   left: -8px;
   top: 40px;
 }
+
+/* PAGINATION */
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  padding-top: 30px;
+}
+
+.pagination a {
+  padding: 0 13px;
+  outline: none;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.active {
+  font-weight: bold;
+}

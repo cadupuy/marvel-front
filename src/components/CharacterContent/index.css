@@ -117,12 +117,13 @@
   display: flex;
   width: 98%;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: flex-start;
   margin: auto;
 }
 
 .character-comics .container > div {
   flex: 15%;
+  max-width: 19%;
 }
 
 /* SPECIFIC STYLING */
@@ -144,7 +145,7 @@
   background-color: white;
   height: 100px;
   bottom: -70px;
-  width: 11000000%;
+  width: 150%;
   transform: rotate(-2deg);
 }
 

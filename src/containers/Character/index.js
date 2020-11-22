@@ -1,14 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Loader from "react-loader-spinner";
+import axios from "axios";
 import CharacterPage from "../../components/CharacterContent";
 import "./index.css";
-import axios from "axios";
 
 const Character = ({ apiUrl, token }) => {
   const [isLoading, setIsLoading] = useState(true);
+  // Return all characters from Marvel API
   const [character, setCharacter] = useState([]);
+  // Return all comics from marvel API
   const [comics, setComics] = useState([]);
+  // Return Character id
   const { id } = useParams();
 
   useEffect(() => {

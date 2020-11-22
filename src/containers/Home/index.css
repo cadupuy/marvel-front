@@ -1,15 +1,3 @@
-.characters-section {
-  display: flex;
-  flex-wrap: wrap;
-  width: 100%;
-  justify-content: center;
-}
-
-.characters-section > a {
-  flex: 20%;
-  max-width: 240px;
-}
-
 main {
   width: 80%;
   margin: auto;
@@ -17,19 +5,16 @@ main {
   margin-top: 80px;
 }
 
-.pagination {
+/* CHARACTER SECTION */
+
+.characters-section {
   display: flex;
-  justify-content: center;
-  padding-top: 30px;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: flex-start;
 }
 
-.pagination a {
-  padding: 0 13px;
-  outline: none;
-  cursor: pointer;
-  font-size: 18px;
-}
-
-.active {
-  font-weight: bold;
+.characters-section > a {
+  flex: 20%;
+  max-width: 240px;
 }

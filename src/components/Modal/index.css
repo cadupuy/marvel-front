@@ -10,18 +10,13 @@
   align-items: center;
 }
 
-.login-form img {
-  width: 130px;
-  margin: 15px auto;
-}
-
 .login-form .container {
   background-color: #fff;
   width: 25%;
   height: 60%;
   display: flex;
   flex-direction: column;
-  padding: 35px;
+  padding: 50px;
   box-sizing: border-box;
   position: relative;
 }
@@ -30,41 +25,6 @@
   display: flex;
   flex-direction: column;
   margin-top: 15px;
-}
-
-.login-form input[type="submit"] {
-  border: none;
-  outline: none;
-  background-color: #e62429;
-  color: white;
-  font-family: inherit;
-  padding: 15px;
-  font-size: 14px;
-  font-family: "Roboto", sans-serif;
-  letter-spacing: 0px;
-  margin-top: 10px;
-}
-
-.login-form input[type="email"],
-.login-form input[type="password"] {
-  border-radius: 5px;
-  padding: 15px 15px;
-  outline: none;
-  font-family: "Roboto", sans-serif;
-  margin: 5px 0;
-}
-
-.input-modal {
-  border: 1px solid #cccccc;
-}
-
-.input-error {
-  border: 1px solid red;
-}
-
-.login-form input[type="email"]:focus,
-.login-form input[type="password"]:focus {
-  border: 1px solid black;
 }
 
 .login-form .container > div:nth-child(3) {
@@ -91,4 +51,51 @@
   top: 30px;
   font-size: 20px;
   cursor: pointer;
+}
+
+.login-form img {
+  width: 130px;
+  margin: 15px auto;
+}
+
+.login-form input[type="submit"] {
+  border: none;
+  outline: none;
+  background-color: #e62429;
+  color: white;
+  font-family: inherit;
+  padding: 15px;
+  font-size: 14px;
+  font-family: "Roboto", sans-serif;
+  letter-spacing: 0px;
+  margin-top: 10px;
+}
+
+.login-form input[type="email"]:focus,
+.login-form input[type="password"]:focus {
+  border: 1px solid black;
+}
+
+.login-form input[type="email"],
+.login-form input[type="password"] {
+  border-radius: 5px;
+  padding: 15px 15px;
+  outline: none;
+  font-family: "Roboto", sans-serif;
+  margin: 5px 0;
+}
+
+.input-modal {
+  border: 1px solid #cccccc;
+}
+
+.input-error {
+  border: 1px solid red;
+}
+
+.hr {
+  width: 100%;
+  height: 1px;
+  background-color: #dddddd;
+  margin-top: -7px;
 }

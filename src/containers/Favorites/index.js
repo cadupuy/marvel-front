@@ -2,13 +2,13 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Loader from "react-loader-spinner";
 import Banner from "../../components/Banner";
-import { Link } from "react-router-dom";
+import CharacterItem from "../../components/CharacterItem";
 import "./index.css";
 
 const Favorites = ({ apiUrl, token }) => {
   const [isLoading, setIsLoading] = useState(true);
+  // Return all favorites for one user from DB
   const [favorites, setFavorites] = useState([]);
-  const [characters, setCharacters] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -20,21 +20,16 @@ const Favorites = ({ apiUrl, token }) => {
             },
           });
 
-          const responseCharacters = await axios.get(`${apiUrl}?page=1&name=`);
-
-          setCharacters(responseCharacters.data.data);
-          setFavorites(response.data.favorites);
+          setFavorites(response.data.favorites.favoriteCharacters);
           setIsLoading(false);
         } catch (error) {
           console.log(error.message);
         }
       }
     };
-
     fetchData();
-  }, [token]);
+  }, [token, apiUrl]);
 
-  console.log(favorites.favoriteCharacters);
   return isLoading ? (
     <div className="loading">
       <Loader
@@ -55,38 +50,13 @@ const Favorites = ({ apiUrl, token }) => {
         }
       />
       <main>
-        <div className="section-title">
+        <div className="favorite-title">
           <h2>FAVORITE CHARACTERS</h2>
         </div>
 
         <section className="characters-section favorites">
-          {characters.results.map((item) => {
-            const id = item.id;
-            return (
-              favorites.favoriteCharacters.indexOf(item.id) !== -1 && (
-                <Link key={item.id} to={`/character/${id}`}>
-                  <div className="character-item">
-                    <div>
-                      <img
-                        src={
-                          item.thumbnail.path ===
-                          "http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available"
-                            ? "https://terrigen-cdn-dev.marvel.com/content/prod/1x/default/explore-no-img.jpg"
-                            : `${item.thumbnail.path}.${item.thumbnail.extension}`
-                        }
-                        alt=""
-                      />
-                    </div>
-                    <div className="content">
-                      <p>{item.name}</p>
-                      <div className="red"></div>
-                    </div>
-
-                    <div className="bottom-right"></div>
-                  </div>
-                </Link>
-              )
-            );
+          {favorites.map((item) => {
+            return <CharacterItem key={item[0].id} item={item[0]} />;
           })}
         </section>
       </main>

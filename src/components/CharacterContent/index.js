@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import ComicItem from "../../components/ComicItem";
 import "./index.css";
 
 const CharacterContent = ({ character, comics, token, apiUrl }) => {
@@ -7,21 +8,33 @@ const CharacterContent = ({ character, comics, token, apiUrl }) => {
   const [favoriteUpdate, setfavoriteUpdate] = useState([]);
 
   const handleClick = async () => {
-    try {
-      const response = await axios.post(
-        `${apiUrl}/user/favorites/update`,
-        {
-          favoriteCharacter: character.id,
-        },
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
+    if (token) {
+      try {
+        const response = await axios.post(
+          `${apiUrl}/user/favorites/update`,
+          {
+            favoriteCharacter: [
+              {
+                id: character.id,
+                name: character.name,
+                description: character.description,
+                thumbnail: {
+                  path: character.thumbnail.path,
+                  extension: character.thumbnail.extension,
+                },
+              },
+            ],
           },
-        }
-      );
-      setfavoriteUpdate(response.data.favorites.favoriteCharacters);
-    } catch (error) {
-      console.log(error.message);
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+        setfavoriteUpdate(response.data.favorites.favoriteCharacters);
+      } catch (error) {
+        console.log(error.message);
+      }
     }
   };
 
@@ -42,7 +55,9 @@ const CharacterContent = ({ character, comics, token, apiUrl }) => {
 
       fetchData();
     }
-  }, [favoriteUpdate, token]);
+  }, [favoriteUpdate, token, apiUrl]);
+
+  let isFavorite = false;
 
   return (
     <>
@@ -56,11 +71,21 @@ const CharacterContent = ({ character, comics, token, apiUrl }) => {
             <h2>{character.name}</h2>
             <p className="description">{character.description}</p>
 
-            {favorites.indexOf(character.id) !== -1 ? (
-              <button className="favorited" onClick={handleClick}>
-                FAVORITED
-              </button>
-            ) : (
+            {favorites.map((item, index) => {
+              return (
+                item[0].id === character.id &&
+                token && (
+                  <div key={index}>
+                    {(isFavorite = true)}
+                    <button className="favorited" onClick={handleClick}>
+                      FAVORITED
+                    </button>
+                  </div>
+                )
+              );
+            })}
+
+            {!isFavorite && (
               <button onClick={handleClick}>ADD TO FAVORITES</button>
             )}
           </div>
@@ -80,19 +105,8 @@ const CharacterContent = ({ character, comics, token, apiUrl }) => {
 
       <div className="character-comics">
         <div className="container">
-          {comics.map((item, index) => {
-            return (
-              <div key={index} className="comic-item">
-                <img
-                  className="comic-img"
-                  src={item.thumbnail.path + "." + item.thumbnail.extension}
-                  alt=""
-                />
-                <div>
-                  <p>{item.title}</p>
-                </div>
-              </div>
-            );
+          {comics.map((item) => {
+            return <ComicItem key={item.id} comics={item} />;
           })}
         </div>
       </div>

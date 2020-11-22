@@ -6,24 +6,6 @@
   position: relative;
 }
 
-.character-item:hover .red {
-  height: 100%;
-}
-
-/* .character-item:hover > div:not(.bottom-right) {
-  background-color: #ed1f21;
-} */
-
-.character-item > div:first-child {
-  width: 100%;
-  height: 205px;
-  overflow: hidden;
-}
-
-.character-item:hover img {
-  transform: scale(1.08);
-}
-
 .character-item img {
   width: 100%;
   height: 100%;
@@ -43,6 +25,12 @@
   z-index: 99;
 }
 
+.character-item > div:first-child {
+  width: 100%;
+  height: 205px;
+  overflow: hidden;
+}
+
 .character-item > div > p:first-child {
   text-transform: uppercase;
   font-weight: bold;
@@ -50,6 +38,14 @@
   letter-spacing: 1px;
   padding-top: 2px;
   padding-left: 3px;
+}
+
+.character-item:hover .red {
+  height: 100%;
+}
+
+.character-item:hover img {
+  transform: scale(1.08);
 }
 
 /* SPÉCIFIC STYLING */

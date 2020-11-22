@@ -1,11 +1,12 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import "./index.css";
 
 const Header = ({ setIsModal, setUser, token }) => {
+  const history = useHistory();
+
   const handleClick = () => {
     setIsModal(true);
-    document.body.style.overflow = "hidden";
   };
 
   const handleUser = () => {
@@ -30,9 +31,14 @@ const Header = ({ setIsModal, setUser, token }) => {
           <Link to="/comics">
             <li>Comics</li>
           </Link>
-          <Link to="/favorites">
-            <li>My Favorites</li>
-          </Link>
+
+          <li
+            onClick={() => {
+              !token ? setIsModal(true) : history.push("/favorites");
+            }}
+          >
+            My Favorites
+          </li>
           {token ? (
             <li onClick={handleUser}>Déconnexion</li>
           ) : (

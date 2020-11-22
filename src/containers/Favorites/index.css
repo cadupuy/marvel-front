@@ -1,3 +1,38 @@
 .favorites {
-  margin-top: 30px;
+  margin-top: 60px;
+  margin-bottom: 100px;
+}
+
+.favorite-title::before {
+  content: "";
+  width: 30px;
+  height: 2px;
+  background-color: #c6a972;
+  transform: rotate(-45deg);
+  position: absolute;
+  left: 65px;
+  top: -18px;
+}
+
+.favorite-title::after {
+  content: "";
+  width: 30px;
+  height: 2px;
+  background-color: #c6a972;
+  transform: rotate(-45deg);
+  position: absolute;
+  left: 10px;
+  top: 40px;
+}
+
+.favorite-title h2 {
+  margin-bottom: 15px;
+  color: #202020;
+  font-size: 26px;
+  letter-spacing: 1px;
+}
+
+.favorite-title {
+  position: relative;
+  padding-left: 15px;
 }

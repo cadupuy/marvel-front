@@ -1,3 +1,10 @@
+main {
+  width: 80%;
+  margin: auto;
+  max-width: 1200px;
+  margin-top: 80px;
+}
+
 .comics-section {
   display: flex;
   flex-wrap: wrap;
@@ -7,11 +14,5 @@
 
 .comics-section > div {
   flex: 15%;
-}
-
-main {
-  width: 80%;
-  margin: auto;
-  max-width: 1200px;
-  margin-top: 80px;
+  max-width: 19%;
 }

@@ -2,9 +2,9 @@ import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import "./index.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const SearchBar = ({ searchComic, setSearchComic }) => {
+const SearchBar = ({ searchItem, setSearchItem }) => {
   const handleSearch = (ev) => {
-    setSearchComic(ev.target.value);
+    setSearchItem(ev.target.value);
   };
 
   return (
@@ -12,7 +12,7 @@ const SearchBar = ({ searchComic, setSearchComic }) => {
       <input
         onChange={handleSearch}
         type="text"
-        value={searchComic}
+        value={searchItem}
         placeholder="SEARCH"
       />
       <FontAwesomeIcon icon={faSearch} />

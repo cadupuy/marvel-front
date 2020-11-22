@@ -1,18 +1,21 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import ReactPaginate from "react-paginate";
 import Loader from "react-loader-spinner";
 import ComicItem from "../../components/ComicItem";
 import Banner from "../../components/Banner";
-import ReactPaginate from "react-paginate";
-import SearchComic from "../../components/SearchComic";
+import SearchBar from "../../components/SearchBar";
 import "./index.css";
 
-const Characters = ({ apiUrl }) => {
-  const [searchComic, setSearchComic] = useState("");
+const Comics = ({ apiUrl }) => {
   const [isLoading, setIsLoading] = useState(true);
+  // Search bar for comics
+  const [searchComic, setSearchComic] = useState("");
+  // Return all comics from Marvel API
   const [comics, setComics] = useState([]);
   const [pageMax, setPageMax] = useState(0);
   const [page, setPage] = useState(1);
+  // Number of results per page
   const limit = 100;
 
   const handlePageClick = (event) => {
@@ -63,9 +66,9 @@ const Characters = ({ apiUrl }) => {
             <h2>MARVEL COMICS LIST</h2>
           </div>
           <div>
-            <SearchComic
-              searchComic={searchComic}
-              setSearchComic={setSearchComic}
+            <SearchBar
+              searchItem={searchComic}
+              setSearchItem={setSearchComic}
             />
           </div>
           <div>
@@ -74,7 +77,9 @@ const Characters = ({ apiUrl }) => {
           </div>
         </div>
         <section className="comics-section">
-          <ComicItem comics={comics.results} />
+          {comics.results.map((item) => {
+            return <ComicItem key={item.id} comics={item} />;
+          })}
         </section>
 
         <ReactPaginate
@@ -95,4 +100,4 @@ const Characters = ({ apiUrl }) => {
   );
 };
 
-export default Characters;
+export default Comics;

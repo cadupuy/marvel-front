@@ -1,18 +1,22 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Loader from "react-loader-spinner";
+import ReactPaginate from "react-paginate";
+
 import CharacterItem from "../../components/CharacterItem";
 import Banner from "../../components/Banner";
-import SearchBar from "../../components/SearchCharacter";
+import SearchBar from "../../components/SearchBar";
 import "./index.css";
-import ReactPaginate from "react-paginate";
 
 const Home = ({ apiUrl }) => {
   const [isLoading, setIsLoading] = useState(true);
+  // Search bar for characters
   const [searchCharacter, setSearchCharacter] = useState("");
+  // Return all characters from Marvel API
   const [characters, setCharacters] = useState([]);
   const [pageMax, setPageMax] = useState(0);
   const [page, setPage] = useState(1);
+  // Number of results per page
   const limit = 100;
 
   const handlePageClick = (event) => {
@@ -28,7 +32,6 @@ const Home = ({ apiUrl }) => {
         );
         setCharacters(response.data.data);
         setPageMax(Math.ceil(Number(response.data.data.total) / limit));
-
         setIsLoading(false);
       } catch (error) {
         console.log(error.message);
@@ -65,8 +68,8 @@ const Home = ({ apiUrl }) => {
           </div>
           <div>
             <SearchBar
-              searchCharacter={searchCharacter}
-              setSearchCharacter={setSearchCharacter}
+              searchItem={searchCharacter}
+              setSearchItem={setSearchCharacter}
             />
           </div>
           <div>
@@ -75,7 +78,9 @@ const Home = ({ apiUrl }) => {
           </div>
         </div>
         <section className="characters-section">
-          <CharacterItem characters={characters.results} />
+          {characters.results.map((item) => {
+            return <CharacterItem key={item.id} item={item} />;
+          })}
         </section>
 
         <div className="pages">

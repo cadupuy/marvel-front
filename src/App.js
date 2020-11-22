@@ -25,7 +25,7 @@ function App() {
 
   const setUser = (tokenToSet) => {
     if (tokenToSet) {
-      Cookies.set("tokenUser", tokenToSet, { expires: 30 });
+      Cookies.set("tokenUser", tokenToSet, { expires: 10 });
       setToken(tokenToSet);
     } else {
       Cookies.remove("tokenUser");
@@ -33,7 +33,15 @@ function App() {
     }
   };
 
-  const apiUrl = "https://marvel-clone-api.herokuapp.com";
+  if (isModal) {
+    document.body.style.overflow = "hidden";
+  } else {
+    document.body.style.overflow = "";
+  }
+
+  const apiUrl = "http://localhost:3001";
+  // local: "  http://localhost:3001";
+  // online : "https://marvel-clone-api.herokuapp.com"
 
   return (
     <Router>

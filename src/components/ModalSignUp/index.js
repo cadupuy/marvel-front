@@ -8,6 +8,7 @@ import "./index.css";
 const Login = ({ setUser, apiUrl, setIsModal }) => {
   let history = useHistory();
   const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
@@ -19,6 +20,10 @@ const Login = ({ setUser, apiUrl, setIsModal }) => {
     setEmail(ev.target.value);
   };
 
+  const handleUsername = (ev) => {
+    setUsername(ev.target.value);
+  };
+
   const handlePassword = (ev) => {
     setPassword(ev.target.value);
   };
@@ -27,9 +32,10 @@ const Login = ({ setUser, apiUrl, setIsModal }) => {
     ev.preventDefault();
 
     try {
-      const response = await axios.post(`${apiUrl}/user/login`, {
+      const response = await axios.post(`${apiUrl}/user/signup`, {
         email: email,
         password: password,
+        username: username,
       });
 
       if (response.data.token) {
@@ -61,6 +67,13 @@ const Login = ({ setUser, apiUrl, setIsModal }) => {
             />
             <input
               className={error !== "" ? "input-error" : "input-modal"}
+              type="text"
+              onChange={handleUsername}
+              value={username}
+              placeholder="Nom d'utilisateur"
+            />
+            <input
+              className={error !== "" ? "input-error" : "input-modal"}
               type="password"
               onChange={handlePassword}
               value={password}
@@ -72,12 +85,9 @@ const Login = ({ setUser, apiUrl, setIsModal }) => {
           <div>
             <p className="error-message">{error}</p>
           </div>
-          <div className="hr"></div>
-          <div>
-            <Link className="signup-text" to="">
-              <button>S'INSCRIRE</button>
-            </Link>
-          </div>
+
+          <p>Already have an account? Sign In</p>
+
           <FontAwesomeIcon onClick={handleClose} icon="times" />
         </div>
       </section>

@@ -5,8 +5,14 @@ const Footer = () => {
   return (
     <footer>
       <p>
-        Made with <strong>React</strong> @ <strong>Le Reacteur</strong> by{" "}
-        <strong>Charles-Antoine Dupuy</strong>
+        Made with <strong>React</strong> @{" "}
+        <strong>
+          <a href="https://www.lereacteur.io/">Le Reacteur </a>
+        </strong>
+        by{" "}
+        <strong>
+          <a href="https://github.com/cadupuy">Charles-Antoine Dupuy</a>
+        </strong>
       </p>
     </footer>
   );
