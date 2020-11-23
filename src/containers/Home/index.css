@@ -1,5 +1,4 @@
-main {
-  width: 80%;
+.character-main {
   margin: auto;
   max-width: 1200px;
   margin-top: 80px;
@@ -16,5 +15,42 @@ main {
 
 .characters-section > a {
   flex: 20%;
-  max-width: 240px;
+  max-width: 25%;
+}
+
+/* RESPONSVIE DESIGN */
+
+@media (max-width: 1230px) {
+  .character-main {
+    width: 900px;
+    margin-top: 80px;
+  }
+
+  .characters-section > a {
+    flex: 25%;
+  }
+}
+
+@media (max-width: 930px) {
+  .character-main {
+    width: 90%;
+  }
+
+  .characters-section > a {
+    flex: 33%;
+  }
+}
+
+@media (max-width: 738px) {
+  .characters-section > a {
+    flex: 50%;
+    max-width: 50%;
+  }
+}
+
+@media (max-width: 430px) {
+  .characters-section > a {
+    flex: 100%;
+    max-width: 100%;
+  }
 }

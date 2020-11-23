@@ -26,10 +26,6 @@
   padding-left: 100px;
 }
 
-/* .character-section .character-details > div:first-child {
-  width: 60%;
-} */
-
 .character-section > div:first-child > div:first-child {
   z-index: 99;
   width: 42%;
@@ -123,9 +119,8 @@
 }
 
 .character-comics .container > div {
-  flex: 17%;
-  max-width: 19%;
-  flex-shrink: 0;
+  flex: 18%;
+  max-width: 25%;
 }
 
 /* SPECIFIC STYLING */
@@ -197,4 +192,30 @@
   position: absolute;
   top: -11px;
   left: -10px;
+}
+
+/* RESPONSIVE DESIGN  */
+
+@media (max-width: 1240px) {
+  .character-comics .container > div {
+    flex: 25%;
+    max-width: 30%;
+  }
+}
+
+@media (max-width: 900px) {
+  .character-comics .container > div {
+    flex: 40%;
+    max-width: 50%;
+  }
+  .character-comics {
+    width: 85%;
+  }
+}
+
+@media (max-width: 605px) {
+  .character-comics .container > div {
+    flex: 100%;
+    max-width: 90%;
+  }
 }

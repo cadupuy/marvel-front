@@ -52,12 +52,14 @@
 
 .character-item .bottom-right {
   position: absolute;
-  transform: rotate(45deg);
-  right: -30px;
-  bottom: -30px;
-  width: 40px;
-  height: 50px;
-  background-color: #fff;
+  right: 0;
+  bottom: 0;
+  border-bottom-color: transparent;
+  border-left-color: transparent;
+  border-right-color: white;
+  border-style: solid;
+  border-top-color: transparent;
+  border-width: 13px 13px 0 0;
   z-index: 99;
 }
 

@@ -57,7 +57,7 @@ const Comics = ({ apiUrl }) => {
         title="MARVEL COMICS"
         description="Get hooked on a hearty helping of heroes and villains from the humble House of Ideas!"
       />
-      <main>
+      <main className="main-comics">
         <div className="main-navigation">
           <div className="section-title">
             <h2>MARVEL COMICS LIST</h2>

@@ -1,5 +1,4 @@
-main {
-  width: 80%;
+.main-comics {
   margin: auto;
   max-width: 1200px;
   margin-top: 80px;
@@ -14,5 +13,42 @@ main {
 
 .comics-section > div {
   flex: 15%;
-  max-width: 19%;
+}
+
+/* RESPONSIVE DESIGN */
+
+@media (max-width: 1230px) {
+  .main-comics {
+    width: 900px;
+    margin-top: 80px;
+  }
+
+  .comics-section > div {
+    flex: 20%;
+  }
+}
+
+@media (max-width: 930px) {
+  .main-comics {
+    width: 90%;
+  }
+
+  .comics-section > div {
+    flex: 25%;
+    max-width: 31%;
+  }
+}
+
+@media (max-width: 738px) {
+  .comics-section > div {
+    flex: 40%;
+    max-width: 50%;
+  }
+}
+
+@media (max-width: 430px) {
+  .comics-section > div {
+    flex: 100%;
+    max-width: 100%;
+  }
 }

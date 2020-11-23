@@ -58,7 +58,7 @@ const Home = ({ apiUrl }) => {
         description="Get hooked on a hearty helping of heroes and villains from the humble House of Ideas!"
       />
 
-      <main>
+      <main className="character-main">
         <div className="main-navigation">
           <div className="section-title">
             <h2>MARVEL CHARACTERS LIST</h2>
