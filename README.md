@@ -1,16 +1,21 @@
-# Marvel API
+# Marvel - React
 
 ![](https://img.shields.io/github/last-commit/cadupuy/marvel-front.svg?style=for-the-badge)
 ![](https://img.shields.io/github/license/cadupuy/marvel-front.svg?style=for-the-badge)
 
-Marvel website made with React, NodeJS and Express using Marvel Developer API. All rights reserved to Marvel.
+[![](https://image.noelshack.com/fichiers/2020/47/4/1605826553-marvel.png)](https://marvel-clone.netlify.app/)
 
-[![](https://image.noelshack.com/fichiers/2020/47/4/1605826553-marvel.png)]()
+## Overview
 
----
+**Website using Marvel API made at [Le Reacteur](https://www.lereacteur.io/) Bootcamp.**  
+6 pages are availables : Login, Signup, Characters, Comics, Character focus, and Favorites.<br />
+Online demo : https://marvel-clone.netlify.app/
 
+## Installation and usage
 
-## Install the project
+Be sure, you have installed all dependencies and applications to run React project on your computer : [Getting Started with React](https://reactjs.org/docs/getting-started.html).
+
+### Running the project
 
 Clone this repository :
 
@@ -30,6 +35,13 @@ When installation is complete, run it :
 ```
 yarn start
 ```
+
+## Packages
+
+- [React Router Dom](https://reacttraining.com/react-router/web/guides/quick-start)
+- [React Paginate](https://github.com/AdeleD/react-paginate)
+- [JS Cookie](https://github.com/js-cookie/js-cookie)
+- [Axios](https://github.com/axios/axios)
 
 ## Contributing
 
