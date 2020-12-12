@@ -11,6 +11,13 @@
 6 pages are availables : Login, Signup, Characters, Comics, Character focus, and Favorites.<br />
 Online demo : https://marvel-clone.netlify.app/
 
+## Packages
+
+- [React Router Dom](https://reacttraining.com/react-router/web/guides/quick-start)
+- [React Paginate](https://github.com/AdeleD/react-paginate)
+- [JS Cookie](https://github.com/js-cookie/js-cookie)
+- [Axios](https://github.com/axios/axios)
+
 ## Installation and usage
 
 Be sure, you have installed all dependencies and applications to run React project on your computer : [Getting Started with React](https://reactjs.org/docs/getting-started.html).
@@ -35,13 +42,6 @@ When installation is complete, run it :
 ```
 yarn start
 ```
-
-## Packages
-
-- [React Router Dom](https://reacttraining.com/react-router/web/guides/quick-start)
-- [React Paginate](https://github.com/AdeleD/react-paginate)
-- [JS Cookie](https://github.com/js-cookie/js-cookie)
-- [Axios](https://github.com/axios/axios)
 
 ## Contributing
 
