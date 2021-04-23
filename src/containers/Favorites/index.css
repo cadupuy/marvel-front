@@ -6,12 +6,13 @@
 }
 
 .favorite-main a {
-  flex: 20% 1;
-  max-width: 20%;
+  width: 240px;
+  height: 363px;
 }
 
 .favorite-section {
   display: flex;
+  flex-wrap: wrap;
 }
 
 .favorite-title::before {
