@@ -2,8 +2,10 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Loader from "react-loader-spinner";
 import axios from "axios";
-import CharacterPage from "../../components/CharacterContent";
 import "./index.css";
+
+// components
+import CharacterPage from "../../components/CharacterContent";
 
 const Character = ({ apiUrl, token, setIsModal }) => {
   const [isLoading, setIsLoading] = useState(true);
@@ -18,7 +20,6 @@ const Character = ({ apiUrl, token, setIsModal }) => {
     const fetchData = async () => {
       try {
         const response = await axios.get(`${apiUrl}/character/${id}`);
-
         const responseComics = await axios.get(
           `${apiUrl}/character/${id}/comics`
         );

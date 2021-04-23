@@ -2,10 +2,12 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import ReactPaginate from "react-paginate";
 import Loader from "react-loader-spinner";
+import "./index.css";
+
+// components
 import ComicItem from "../../components/ComicItem";
 import Banner from "../../components/Banner";
 import SearchBar from "../../components/SearchBar";
-import "./index.css";
 
 const Comics = ({ apiUrl }) => {
   const [isLoading, setIsLoading] = useState(true);
@@ -30,7 +32,6 @@ const Comics = ({ apiUrl }) => {
           `${apiUrl}/comics?page=${page}&title=${searchComic}`
         );
         setPageMax(Math.ceil(Number(response.data.data.total) / limit));
-
         setComics(response.data.data);
         setIsLoading(false);
       } catch (error) {

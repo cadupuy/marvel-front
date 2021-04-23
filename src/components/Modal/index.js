@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./index.css";
+
+// Icons
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Login = ({ setUser, apiUrl, setIsModal, setIsModalSignUp }) => {
   let history = useHistory();

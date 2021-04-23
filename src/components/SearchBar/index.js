@@ -1,6 +1,8 @@
-import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import "./index.css";
+
+// Icons
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
 const SearchBar = ({ searchItem, setSearchItem }) => {
   const handleSearch = (ev) => {

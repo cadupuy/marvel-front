@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Loader from "react-loader-spinner";
+import "./index.css";
+
+// components
 import Banner from "../../components/Banner";
 import CharacterItem from "../../components/CharacterItem";
-import "./index.css";
 
 const Favorites = ({ apiUrl, token }) => {
   const [isLoading, setIsLoading] = useState(true);
@@ -19,7 +21,6 @@ const Favorites = ({ apiUrl, token }) => {
               Authorization: `Bearer ${token}`,
             },
           });
-
           setFavorites(response.data.favorites.favoriteCharacters);
           setIsLoading(false);
         } catch (error) {
@@ -66,12 +67,12 @@ const Favorites = ({ apiUrl, token }) => {
         title="MY FAVORITES"
         description="Get hooked on a hearty helping of heroes and villains from the humble House of Ideas!"
       />
-      <main>
+      <main class="favorite-main">
         <div className="favorite-title">
           <h2>FAVORITE CHARACTERS</h2>
         </div>
 
-        <section className="characters-section favorites">
+        <section className="favorite-section">
           {favorites.map((item) => {
             return <CharacterItem key={item[0].id} item={item[0]} />;
           })}

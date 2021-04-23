@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import "./App.css";
 import {
   BrowserRouter as Router,
   Switch,
@@ -7,16 +6,21 @@ import {
   Redirect,
 } from "react-router-dom";
 import Cookies from "js-cookie";
+import "./App.css";
 
+// Containers
 import Home from "./containers/Home";
 import Comics from "./containers/Comics";
-import Footer from "./components/Footer";
-import Header from "./components/Header";
 import Character from "./containers/Character";
 import Favorites from "./containers/Favorites";
+
+// Components
 import Modal from "./components/Modal";
 import ModalSignUp from "./components/ModalSignUp";
+import Footer from "./components/Footer";
+import Header from "./components/Header";
 
+// Icons
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 library.add(faTimes);
@@ -42,6 +46,7 @@ function App() {
     document.body.style.overflow = "";
   }
 
+  // Backend server url
   const apiUrl = "https://marvel-clone-api.herokuapp.com";
 
   return (

@@ -90,19 +90,3 @@ a {
 .active {
   font-weight: bold;
 }
-
-/* SCROLL BAR
-
-.character-comics ::-webkit-scrollbar {
-  height: 6px;
-}
-
-.character-comics ::-webkit-scrollbar-track {
-  background: #f1f1f1;
-  background-clip: content-box;
-  border: 4px solid transparent;
-}
-
-.character-comics ::-webkit-scrollbar-thumb {
-  background: #f11e23;
-} */

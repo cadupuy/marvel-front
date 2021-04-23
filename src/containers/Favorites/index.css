@@ -1,6 +1,17 @@
-.favorites {
-  margin-top: 60px;
+.favorite-main {
+  margin: auto;
+  max-width: 1200px;
+  margin-top: 80px;
   margin-bottom: 100px;
+}
+
+.favorite-main a {
+  flex: 20% 1;
+  max-width: 20%;
+}
+
+.favorite-section {
+  display: flex;
 }
 
 .favorite-title::before {
@@ -26,7 +37,7 @@
 }
 
 .favorite-title h2 {
-  margin-bottom: 15px;
+  margin-bottom: 60px;
   color: #202020;
   font-size: 26px;
   letter-spacing: 1px;

@@ -2,11 +2,12 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Loader from "react-loader-spinner";
 import ReactPaginate from "react-paginate";
+import "./index.css";
 
+// Components
 import CharacterItem from "../../components/CharacterItem";
 import Banner from "../../components/Banner";
 import SearchBar from "../../components/SearchBar";
-import "./index.css";
 
 const Home = ({ apiUrl }) => {
   const [isLoading, setIsLoading] = useState(true);
